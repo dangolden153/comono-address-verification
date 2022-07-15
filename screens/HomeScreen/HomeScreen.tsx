@@ -1,35 +1,28 @@
 import { FlatList, StyleSheet, Text, View } from "react-native";
-import React, { useEffect, useState } from "react";
-import { useAxios } from "../../utils/axiosIntance";
-import { NewsItemProps } from "../../components/NewsItem/type";
+import React, { useEffect } from "react";
 import NewsItem from "../../components/NewsItem/NewsItem";
+import { selectNewsComment, selectNewsData, selectNewsImages } from "../../Redux/Features/news/newsSlices";
+import { useSelector } from "react-redux";
+import { getNewsData } from "../../Redux/Features/news/newsAction";
+import { useAppDispatch } from "../../Redux/hooks";
 
 const HomeScreen = () => {
-  const [data, setData] = useState<Array<NewsItemProps>>([]);
-  const getNewsData = async () => {
-    try {
-      const { data } = await useAxios.get("news");
-        // console.log("news data", data);
-      setData(data);
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
+  const dispatch = useAppDispatch();
+  const newData = useSelector(selectNewsData);
 
+//   console.log('comments', comments)
   useEffect(() => {
-    getNewsData();
+    dispatch(getNewsData(dispatch));
   }, []);
 
-
-//   console.log('data', data)
+  //   console.log('data', data)
   return (
     <View style={styles.container}>
       <FlatList
-        data={data}
-        keyExtractor={({ id, index }: any) => (index+id).toString()}
+        data={newData}
+        keyExtractor={({ id, index }: any) => (index + id).toString()}
         renderItem={({ item }: any) => <NewsItem {...item} />}
         showsVerticalScrollIndicator={false}
-        // contentContainerStyle={{backgroundColor:"plum", width:"100%"}}
       />
     </View>
   );
