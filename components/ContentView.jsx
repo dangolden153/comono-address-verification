@@ -1,14 +1,14 @@
 import React from "react";
 import { WebView } from "react-native-webview";
 
-import { StyleSheet, Text, View, Modal } from "react-native";
+import {  View, Modal } from "react-native";
 
-interface webViewProps {
-  dataString: string;
-  onOpen: boolean;
-  onClose: () => void;
-}
-const ContentView = (props: webViewProps) => {
+// interface webViewProps {
+//   dataString: string;
+//   onOpen: boolean;
+//   onClose: () => void;
+// }
+const ContentView = (props) => {
 
   console.log('props?.dataString', props?.dataString)
   const url =
@@ -20,7 +20,7 @@ const ContentView = (props: webViewProps) => {
       visible={props?.onOpen}
       onRequestClose={props.onClose}
     >
-      <View style={styles.container}>
+      <View style={{flex: 1}}>
         <WebView source={{ uri: url }} />
       </View>
     </Modal>
@@ -29,13 +29,7 @@ const ContentView = (props: webViewProps) => {
 
 export default ContentView;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    // justifyContent:"center",
-    // alignItems:"center"
-  },
-});
+
 
 // import React, { useEffect, useRef, useState } from "react";
 // import { isRequired } from "./helpers";

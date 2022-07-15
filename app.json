@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "newss-app",
-    "slug": "newss-app",
+    "name": "comono-address-verification",
+    "slug": "comono-address-verification",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
