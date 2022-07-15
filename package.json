@@ -8,7 +8,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "release": "release-it"
   },
   "jest": {
     "preset": "jest-expo"
@@ -20,6 +21,7 @@
     "@react-navigation/native-stack": "^6.1.0",
     "@react-navigation/stack": "^6.2.2",
     "@reduxjs/toolkit": "^1.8.3",
+    "@release-it/conventional-changelog": "^5.0.0",
     "@rneui/base": "^4.0.0-rc.5",
     "@rneui/themed": "^4.0.0-rc.5",
     "axios": "^0.27.2",
@@ -48,7 +50,13 @@
     "jest": "^26.6.3",
     "jest-expo": "~45.0.0",
     "react-test-renderer": "17.0.2",
+    "release-it": "^15.1.1",
     "typescript": "~4.3.5"
   },
-  "private": true
+  "private": true,
+  "release-it": {
+    "github": {
+      "release": true
+    }
+  }
 }
